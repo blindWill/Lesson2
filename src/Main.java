@@ -6,6 +6,7 @@ public class Main {
         determineLength();
         determineTheThirdDigitOnTheRight();
         determineIfNumberEven();
+        rearrangementReverse();
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
@@ -130,6 +131,39 @@ public class Main {
             try {
                 Scanner in = new Scanner(System.in);
                 num = in.nextInt();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                isNotCorrect = true;
+            }
+        }while(isNotCorrect);
+        return num;
+    }
+
+    public static void rearrangementReverse(){
+        System.out.println("Enter Number: ");
+        int number = inputThreeDigitInt();
+        System.out.println("Initial number: " + number);
+        String strNumber = Integer.toString(number);
+        char firstDigit = strNumber.charAt(0);
+        char[] charArray = strNumber.toCharArray();
+        charArray[0] = charArray[2];
+        charArray[2] = firstDigit;
+        strNumber = String.valueOf(charArray);
+        System.out.println("New number:" + strNumber);
+    }
+
+    public static int inputThreeDigitInt() {
+        int num = 0;
+        boolean isNotCorrect;
+        do {
+            isNotCorrect = false;
+            try {
+                Scanner in = new Scanner(System.in);
+                num = in.nextInt();
+                if (num < 100 || num > 999) {
+                    isNotCorrect = true;
+                    throw new Exception("Number must be in range[100...999]");
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
                 isNotCorrect = true;
