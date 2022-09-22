@@ -2,12 +2,41 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        countSeconds();
-        determineLength();
-        determineTheThirdDigitOnTheRight();
-        determineIfNumberEven();
-        rearrangementReverse();
-        DetermineTrainTimeOnTheWay();
+        int chosenTask;
+        boolean isContinue = true;
+        do{
+            System.out.println("#1 Calculate the time in seconds since the beginning of the day\n" +
+                    "#2 Determine the length of the segment in metres\n" +
+                    "#3 Define the third digit on the right of this number\n" +
+                    "#4 Determine whether a given number is even\n" +
+                    "#5 Output a number obtained from a given permutation of digits in reverse order\n" +
+                    "#6 Determine train time en route in minutes\n" +
+                    "# Any number to end execution");
+            chosenTask = inputInteger();
+            switch(chosenTask) {
+                case (1):
+                    countSeconds();
+                    break;
+                case (2):
+                    determineLength();
+                    break;
+                case (3):
+                    determineTheThirdDigitOnTheRight();
+                    break;
+                case (4):
+                    determineIfNumberEven();
+                    break;
+                case (5):
+                    rearrangementReverse();
+                    break;
+                case (6):
+                    DetermineTrainTimeOnTheWay();
+                    break;
+                default:
+                    isContinue = false;
+                    break;
+            }
+        }while(isContinue);
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
