@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         countSeconds();
+        determineLength();
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
@@ -45,6 +46,34 @@ public class Main {
                     isNotCorrect = true;
                     throw new Exception("Number must be in range[0..24]");
                 }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                isNotCorrect = true;
+            }
+        }while(isNotCorrect);
+        return num;
+    }
+
+    public static void determineLength(){
+        final double vershokInMeters = 0.04445;
+        System.out.println("Enter fathoms: ");
+        double fathoms = inputNum();
+        System.out.println("Enter yards: ");
+        double yards = inputNum();
+        System.out.println("Enter vershoks: ");
+        double vershoks = inputNum();
+        double result = (fathoms * 48 + yards * 16 + vershoks) * vershokInMeters;
+        System.out.println("Length in meters: " + result);
+    }
+
+    public static double inputNum() {
+        double num = 0;
+        boolean isNotCorrect;
+        do {
+            isNotCorrect = false;
+            try {
+                Scanner in = new Scanner(System.in);
+                num = in.nextByte();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 isNotCorrect = true;
