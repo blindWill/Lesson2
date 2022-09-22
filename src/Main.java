@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         countSeconds();
         determineLength();
+        determineTheThirdDigitOnTheRight();
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
@@ -57,23 +58,23 @@ public class Main {
     public static void determineLength(){
         final double vershokInMeters = 0.04445;
         System.out.println("Enter fathoms: ");
-        double fathoms = inputNum();
+        double fathoms = inputDouble();
         System.out.println("Enter yards: ");
-        double yards = inputNum();
+        double yards = inputDouble();
         System.out.println("Enter vershoks: ");
-        double vershoks = inputNum();
+        double vershoks = inputDouble();
         double result = (fathoms * 48 + yards * 16 + vershoks) * vershokInMeters;
         System.out.println("Length in meters: " + result);
     }
 
-    public static double inputNum() {
+    public static double inputDouble() {
         double num = 0;
         boolean isNotCorrect;
         do {
             isNotCorrect = false;
             try {
                 Scanner in = new Scanner(System.in);
-                num = in.nextByte();
+                num = in.nextDouble();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 isNotCorrect = true;
@@ -81,6 +82,35 @@ public class Main {
         }while(isNotCorrect);
         return num;
     }
+
+    public static void determineTheThirdDigitOnTheRight(){
+        System.out.println("Enter Number >=100: ");
+        int number = inputNumber();
+        String strNumber = Integer.toString(number);
+        int len = strNumber.length();
+        System.out.println("The third digit on the right: " + strNumber.charAt(len - 3));
+    }
+
+    public static int inputNumber(){
+        int num = 0;
+        boolean isNotCorrect;
+        do {
+            isNotCorrect = false;
+            try {
+                Scanner in = new Scanner(System.in);
+                num = in.nextInt();
+                if (num < 100) {
+                    isNotCorrect = true;
+                    throw new Exception("Number must be in range[100...]");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                isNotCorrect = true;
+            }
+        }while(isNotCorrect);
+        return num;
+    }
+
 
 
 }
