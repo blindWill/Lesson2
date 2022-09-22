@@ -7,6 +7,7 @@ public class Main {
         determineTheThirdDigitOnTheRight();
         determineIfNumberEven();
         rearrangementReverse();
+        DetermineTrainTimeOnTheWay();
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
@@ -170,6 +171,28 @@ public class Main {
             }
         }while(isNotCorrect);
         return num;
+    }
+
+    public static void DetermineTrainTimeOnTheWay(){
+        System.out.println("Enter departure hours: ");
+        byte hours1 = inputHours();
+        System.out.println("Enter departure minutes: ");
+        byte minutes1 = inputMinutesOrSeconds();
+        byte hours2;
+        boolean isNotCorrect;
+        do{
+            isNotCorrect = false;
+            System.out.println("Enter arrival hours: ");
+            hours2 = inputHours();
+            if (hours2 < hours1){
+                isNotCorrect = true;
+                System.out.println("Wrong input! departure hours must be less than arrival hours.");
+            }
+        }while(isNotCorrect);
+        System.out.println("Enter arrival minutes: ");
+        byte minutes2 = inputMinutesOrSeconds();
+        int result = (hours2 - hours1 - 1) * 60 + (60 - minutes1) + minutes2;
+        System.out.println("Train time on the way in minutes: " + result);
     }
 
 }
