@@ -5,6 +5,7 @@ public class Main {
         countSeconds();
         determineLength();
         determineTheThirdDigitOnTheRight();
+        determineIfNumberEven();
     }
     public static void countSeconds(){
         System.out.println("Enter hours: ");
@@ -111,6 +112,30 @@ public class Main {
         return num;
     }
 
+    public static void determineIfNumberEven(){
+        System.out.println("Enter Number: ");
+        int number = inputInteger();
+        if (number % 2 == 1){
+            System.out.println("The number is odd");
+        }else{
+            System.out.println("The number is even");
+        }
+    }
 
+    public static int inputInteger() {
+        int num = 0;
+        boolean isNotCorrect;
+        do {
+            isNotCorrect = false;
+            try {
+                Scanner in = new Scanner(System.in);
+                num = in.nextInt();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                isNotCorrect = true;
+            }
+        }while(isNotCorrect);
+        return num;
+    }
 
 }
