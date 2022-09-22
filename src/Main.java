@@ -57,11 +57,10 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 hours = in.nextByte();
                 if (hours > 24 || hours < 0) {
-                    isNotCorrect = true;
                     throw new Exception("Number must be in range[0..24]");
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
@@ -76,11 +75,10 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 num = in.nextByte();
                 if (num > 60 || num < 0) {
-                    isNotCorrect = true;
                     throw new Exception("Number must be in range[0..24]");
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
@@ -108,7 +106,7 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 num = in.nextDouble();
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
@@ -132,11 +130,10 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 num = in.nextInt();
                 if (num < 100) {
-                    isNotCorrect = true;
                     throw new Exception("Number must be in range[100...]");
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
@@ -162,7 +159,7 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 num = in.nextInt();
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
@@ -173,13 +170,12 @@ public class Main {
         System.out.println("Enter Number: ");
         int number = inputThreeDigitInt();
         System.out.println("Initial number: " + number);
-        String strNumber = Integer.toString(number);
-        char firstDigit = strNumber.charAt(0);
-        char[] charArray = strNumber.toCharArray();
-        charArray[0] = charArray[2];
-        charArray[2] = firstDigit;
-        strNumber = String.valueOf(charArray);
-        System.out.println("New number:" + strNumber);
+        int firstDigit = (int)Math.floor(number / 100);
+        int twoDigitNumber = number % 100;
+        int thirdDigit = twoDigitNumber % 10;
+        int secondDigit = (int)Math.floor(twoDigitNumber / 10);
+        int result = thirdDigit * 100 + secondDigit * 10 + firstDigit;
+        System.out.println("New number: " + result);
     }
 
     public static int inputThreeDigitInt() {
@@ -191,11 +187,10 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 num = in.nextInt();
                 if (num < 100 || num > 999) {
-                    isNotCorrect = true;
-                    throw new Exception("Number must be in range[100...999]");
+                    throw new Exception("Number must be in range[100..999]");
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Wrong input! try again: ");
                 isNotCorrect = true;
             }
         }while(isNotCorrect);
